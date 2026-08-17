@@ -1,7 +1,23 @@
+import Link from 'next/link';
+import { CARS } from '@/app/constants';
+
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      Home
-    </div>
+    <main className="p-10 bg-black min-h-screen">
+      <h1 className="text-3xl font-black text-white mb-10 uppercase italic">
+        The Garage
+      </h1>
+      <div className="flex gap-4">
+        {CARS.map((car) => (
+          <Link
+            key={car.id}
+            href={`/photo/${car.id}`}
+            className="p-6 bg-zinc-900 border border-zinc-800 rounded-xl text-white hover:border-blue-500 transition-all"
+          >
+            {car.name}
+          </Link>
+        ))}
+      </div>
+    </main>
   );
 }
